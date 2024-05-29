@@ -29,9 +29,9 @@ namespace GUI
                 return;
             }
 
-            string tc = cboTieuChiSP.SelectedItem.ToString();
+            //khởi tạo các biến gt
             DataTable dt = null;
-            string ngay = dtThoiGian.Value.ToString("yyyy-MM-dd"); // Đảm bảo định dạng yyyy-MM-dd
+            string ngay = dtThoiGian.Value.ToString("yyyy-MM-dd"); // lấy gt trong dtNgay và định dạng theo chuỗi
             bool chay = false;
 
             if (cboTieuChiSP.SelectedItem.ToString() == "Sản phẩm bán chạy")
@@ -43,7 +43,7 @@ namespace GUI
             {
                 if (rdbNgay.Checked)
                 {
-                    dt = busSP.ThongKeSPTheoNgay(ngay, chay);
+                    dt = busSP.ThongKeSPTheoNgay(ngay, chay);  // nếu chọn rdbNgay thì gọi phương thức tk theo ngày
                 }
                 else if (rdbThang.Checked)
                 {
@@ -54,6 +54,7 @@ namespace GUI
                     dt = busSP.ThongKeSPTheoNam(ngay, chay);
                 }
 
+                //nếu datatable ko rỗng và có ít nhất 1 hàng dl thì gán datatable lm nguồn dữ liệu cho dgTK để ht kq
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dgBaoCaoSP.DataSource = dt;

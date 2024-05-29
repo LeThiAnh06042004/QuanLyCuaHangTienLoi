@@ -246,7 +246,7 @@ namespace GUI
             this.btnVe.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnVe.ForeColor = System.Drawing.Color.White;
             this.btnVe.Image = ((System.Drawing.Image)(resources.GetObject("btnVe.Image")));
-            this.btnVe.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnVe.ImageSize = new System.Drawing.Size(30, 30);
             this.btnVe.Location = new System.Drawing.Point(701, 30);
             this.btnVe.Name = "btnVe";
             this.btnVe.Size = new System.Drawing.Size(44, 42);

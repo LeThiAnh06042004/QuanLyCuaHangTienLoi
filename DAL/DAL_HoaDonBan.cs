@@ -66,27 +66,7 @@ namespace DAL
             }
             return tonTai;
         }
-        //public bool KiemTraLQ(string maHDB)
-        //{
-            //try
-            //{
-                //con.Open();
-                //string sql = "SELECT COUNT(*) FROM CHITIETHDB WHERE MaHDB = @MaHDB";
-                //SqlCommand cmd = new SqlCommand(sql, con);
-                //cmd.Parameters.AddWithValue("@MaHDB", maHDB);
-                //int count = (int)cmd.ExecuteScalar();
-                //return count > 0;
-            //}
-            //catch (Exception ex)
-           // {
-                //Console.WriteLine("Lỗi: " + ex.Message);
-            //}
-            //finally
-            //{
-                //con.Close();
-            //}
-            //return false;
-        //}
+
 
         public bool ThemHDB(DTO_HoaDonBan hdb)
         {
@@ -159,27 +139,7 @@ namespace DAL
             }
             return false;
         }
-        //public bool XoaCTHDB(string maHDB)
-        //{
-            //try
-            //{
-                //con.Open();
-                //string sql = "DELETE FROM CHITIETHDB WHERE MaHDB = @MaHDB";
-                //SqlCommand cmd = new SqlCommand(sql, con);
-                //cmd.Parameters.AddWithValue("@MaHDB", maHDB);
-                //int rowsAffected = cmd.ExecuteNonQuery();
-                //return rowsAffected > 0;
-            //}
-            //catch (Exception ex)
-            //{
-                //Console.WriteLine("Lỗi: " + ex.Message);
-                //return false;
-            //}
-            //finally
-            //{
-                //con.Close();
-            //}
-        //}
+
 
         public DataTable TimKiemHDB(DateTime tk)
         {

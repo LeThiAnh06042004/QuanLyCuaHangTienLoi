@@ -77,15 +77,7 @@ namespace DAL
                 con.Close();
             }
             return false;
-            //con.Open();
-            //string sql = string.Format("insert into SANPHAM values ('{0}', N'{1}', '{2}', '{3}')", sp.SanPham_MaSP, sp.SanPham_TenSP, sp.SanPham_SLTon, sp.SanPham_Giaban);
-            //SqlCommand cmd = new SqlCommand(sql, con);
-            //if (cmd.ExecuteNonQuery() > 0)
-            //{
-            //con.Close();
-            //return true;
-            //}
-            //return false;
+            
         }
 
         public bool SuaSP(DTO_SanPham sp)
@@ -154,8 +146,8 @@ namespace DAL
         {
             con.Open();
             string sql = "SELECT SP.MaSP, SP.TenSP, " +
-                         "       COALESCE(SUM(CASE WHEN HDB.NgayBan = @NgayBan THEN CT.SLBan ELSE 0 END), 0) AS SoLuongBan, " +
-                         "       COALESCE(SUM(CASE WHEN HDB.NgayBan = @NgayBan THEN CT.SLBan * CT.GiaBan ELSE 0 END), 0) AS DoanhThu " +
+                         "       SUM(CASE WHEN HDB.NgayBan = @NgayBan THEN CT.SLBan ELSE 0 END) AS SoLuongBan, " +
+                         "       SUM(CASE WHEN HDB.NgayBan = @NgayBan THEN CT.SLBan * CT.GiaBan ELSE 0 END) AS DoanhThu " +
                          "FROM SANPHAM SP " +
                          "LEFT JOIN CHITIETHDB CT ON SP.MaSP = CT.MaSP " +
                          "LEFT JOIN HOADONBAN HDB ON CT.MaHDB = HDB.MaHDB " +
@@ -170,11 +162,11 @@ namespace DAL
                 sql += "ORDER BY SoLuongBan ASC";
             }
 
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlCommand cmd = new SqlCommand(sql, con); // tạo thực thi sqlcommand vs tham số @ngaybans
             cmd.Parameters.AddWithValue("@NgayBan", ngayBan);
 
             DataTable dt = new DataTable();
-            dt.Load(cmd.ExecuteReader());
+            dt.Load(cmd.ExecuteReader()); // tải kq vào 1 dataTable
             con.Close();
             return dt;
         }
@@ -183,8 +175,8 @@ namespace DAL
         {
             con.Open();
             string sql = "SELECT SP.MaSP, SP.TenSP, " +
-                         "       COALESCE(SUM(CASE WHEN MONTH(HDB.NgayBan) = MONTH(@Thang) AND YEAR(HDB.NgayBan) = YEAR(@Thang) THEN CT.SLBan ELSE 0 END), 0) AS SoLuongBan, " +
-                         "       COALESCE(SUM(CASE WHEN MONTH(HDB.NgayBan) = MONTH(@Thang) AND YEAR(HDB.NgayBan) = YEAR(@Thang) THEN CT.SLBan * CT.GiaBan ELSE 0 END), 0) AS DoanhThu " +
+                         "       SUM(CASE WHEN MONTH(HDB.NgayBan) = MONTH(@Thang) AND YEAR(HDB.NgayBan) = YEAR(@Thang) THEN CT.SLBan ELSE 0 END) AS SoLuongBan, " +
+                         "       SUM(CASE WHEN MONTH(HDB.NgayBan) = MONTH(@Thang) AND YEAR(HDB.NgayBan) = YEAR(@Thang) THEN CT.SLBan * CT.GiaBan ELSE 0 END) AS DoanhThu " +
                          "FROM SANPHAM SP " +
                          "LEFT JOIN CHITIETHDB CT ON SP.MaSP = CT.MaSP " +
                          "LEFT JOIN HOADONBAN HDB ON CT.MaHDB = HDB.MaHDB " +
@@ -212,8 +204,8 @@ namespace DAL
         {
             con.Open();
             string sql = "SELECT SP.MaSP, SP.TenSP, " +
-                 "       COALESCE(SUM(CASE WHEN YEAR(HDB.NgayBan) = YEAR(@Nam) THEN CT.SLBan ELSE 0 END), 0) AS SoLuongBan, " +
-                 "       COALESCE(SUM(CASE WHEN YEAR(HDB.NgayBan) = YEAR(@Nam) THEN CT.SLBan * CT.GiaBan ELSE 0 END), 0) AS DoanhThu " +
+                 "       SUM(CASE WHEN YEAR(HDB.NgayBan) = YEAR(@Nam) THEN CT.SLBan ELSE 0 END) AS SoLuongBan, " +
+                 "       SUM(CASE WHEN YEAR(HDB.NgayBan) = YEAR(@Nam) THEN CT.SLBan * CT.GiaBan ELSE 0 END) AS DoanhThu " +
                  "FROM SANPHAM SP " +
                  "LEFT JOIN CHITIETHDB CT ON SP.MaSP = CT.MaSP " +
                  "LEFT JOIN HOADONBAN HDB ON CT.MaHDB = HDB.MaHDB " +

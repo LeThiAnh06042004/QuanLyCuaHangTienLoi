@@ -29,7 +29,7 @@ namespace GUI
             {
                 if(txtTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
                 {
-                    vaiTro = busNV.DangNhap(txtTaiKhoan.Text, txtMatKhau.Text);
+                    vaiTro = busNV.DangNhap(txtTaiKhoan.Text, txtMatKhau.Text); //gọi phương thức đăng nhập của lớp nghiệp vụ để xác thực tt đn
                     if (vaiTro != null)
                     {
                         if (vaiTro == "Quản lý")

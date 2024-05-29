@@ -142,6 +142,7 @@ namespace GUI
             masp = txtMa.Text;
             tensp = txtTen.Text;
             giaban = txtGiaBan.Text;
+            //thông tin sau gán đc truyền qua ts out của pthuc, cho phép trả về từ pt và sd ngoài pt
         }
 
         public void LayTenSP(out string masp, out string tensp)

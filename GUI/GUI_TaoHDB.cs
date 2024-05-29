@@ -40,10 +40,11 @@ namespace GUI
             txtGiaBan.Text = dgGioHang[3, e.RowIndex].Value.ToString();
         }
 
+        //tạo ra 1 đối tg dto từ những tt cụ thể về cthdb giúp dễ dàng truyền thông tin qua các lớp và các pt
         private DTO_ChiTietHDB TaoDTO_ChiTietHDB(string maHDB, string maSP, string tenSP, int soLuong, int giaBan)
         {
             DTO_ChiTietHDB ct = new DTO_ChiTietHDB();
-            ct.CTHDB_MaHDB = maHDB;
+            ct.CTHDB_MaHDB = maHDB; //gán các tt đc cung cấp cho dto
             ct.CTHDB_MaSP = maSP;
             ct.CTHDB_TenSP = tenSP;
             ct.CTHDB_SL = soLuong;
@@ -64,11 +65,11 @@ namespace GUI
                     }
                     else
                     {
-                        dgGioHang.Rows.Add(cboMaSP.Text, txtTenSP.Text, txtSL.Text, txtGiaBan.Text);
+                        dgGioHang.Rows.Add(cboMaSP.Text, txtTenSP.Text, txtSL.Text, txtGiaBan.Text); //thêm dl vào bảng
                         TinhTien();
 
-                        DTO_ChiTietHDB ct = TaoDTO_ChiTietHDB(txtMaHD.Text, cboMaSP.Text, txtTenSP.Text, int.Parse(txtSL.Text), int.Parse(txtGiaBan.Text));
-                        if (!busCTHDB.ThemCTHDB(ct))
+                        DTO_ChiTietHDB ct = TaoDTO_ChiTietHDB(txtMaHD.Text, cboMaSP.Text, txtTenSP.Text, int.Parse(txtSL.Text), int.Parse(txtGiaBan.Text)); //tạo đối tg dto = cách sd pthuc tạodto
+                        if (!busCTHDB.ThemCTHDB(ct)) // thêm vào csdl
                         {
                             MessageBox.Show("Không thể lưu chi tiết hóa đơn bán !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -106,10 +107,10 @@ namespace GUI
 
         private void cboMaSP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataRowView drv = cboMaSP.SelectedItem as DataRowView;
-            string sp = drv.Row[0].ToString();
-            DataTable dtTenSP = busCTHDB.LayTenSP(sp);
-            string tenSP = dtTenSP.Rows[0]["TenSP"].ToString();
+            DataRowView drv = cboMaSP.SelectedItem as DataRowView; //ép kiểu đối tg đc chọn tuef cbo về dataRV để truy cập dl trong dòng
+            string sp = drv.Row[0].ToString(); // lấy mã sp (cột đt) từ dòng đc chọn
+            DataTable dtTenSP = busCTHDB.LayTenSP(sp); //truy vấn csdl avf lấy tên sp rồi hiển thị lên txt
+            string tenSP = dtTenSP.Rows[0]["TenSP"].ToString(); 
             txtTenSP.Text = tenSP;
 
             DataTable dtGia = busCTHDB.LayGiaBan(sp);
@@ -161,9 +162,9 @@ namespace GUI
         private void btnChonHD_Click(object sender, EventArgs e)
         {
             GUI_HoaDonBan hdb = new GUI_HoaDonBan();
-            if (hdb.ShowDialog() == DialogResult.Cancel)
+            if (hdb.ShowDialog() == DialogResult.Cancel) //hiển thị hdb cho đến khi đóng nó
             {
-                hdb.GanHDB(out string mahdb, out string manv, out string tenkh, out string sdt, out string ngayban);
+                hdb.GanHDB(out string mahdb, out string manv, out string tenkh, out string sdt, out string ngayban); // gán thông tin đc chọn và các txt hiện tại
                 txtMaHD.Text = mahdb;
                 cboMaNV.Text = manv;
                 txtTenKH.Text = tenkh;
@@ -236,7 +237,8 @@ namespace GUI
                 else
                 {
                     string ngayBan = dtNgayBan.Value.ToString("yyyy-MM-dd");
-                    DTO_HoaDonBan dtoHDB = new DTO_HoaDonBan(txtMaHD.Text.Trim(), cboMaNV.Text.Trim(), txtTenKH.Text, txtSDT.Text, DateTime.Parse(ngayBan));
+                    //tạo dto lưu trữ thông tin hdb mới
+                    DTO_HoaDonBan dtoHDB = new DTO_HoaDonBan(txtMaHD.Text.Trim(), cboMaNV.Text.Trim(), txtTenKH.Text, txtSDT.Text, DateTime.Parse(ngayBan)); 
 
                     if (!busHDB.ThemHDB(dtoHDB))
                     {

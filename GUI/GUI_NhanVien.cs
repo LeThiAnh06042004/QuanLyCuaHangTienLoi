@@ -152,7 +152,7 @@ namespace GUI
             // Chỉ cho phép nhập số và phím Backspace để sửa lỗi
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true; // nếu ko phải số hoặc bp thì ngăn ko cho kí tự đó hiển thị trog ô
                 MessageBox.Show("Chỉ cho phép nhập số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -162,9 +162,8 @@ namespace GUI
             // Giới hạn độ dài chuỗi nhập vào là 10 ký tự
             if (txtSdt.Text.Length > 10)
             {
-                txtSdt.Text = txtSdt.Text.Substring(0, 10);
-                // Di chuyển con trỏ về cuối chuỗi
-                txtSdt.SelectionStart = txtSdt.Text.Length;
+                txtSdt.Text = txtSdt.Text.Substring(0, 10); // cắt bớt chuỗi chỉ để 10 số đầu tiên
+                txtSdt.SelectionStart = txtSdt.Text.Length; // Di chuyển con trỏ về cuối chuỗi
             }
         }
     }

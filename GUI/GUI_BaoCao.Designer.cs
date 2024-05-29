@@ -208,7 +208,7 @@ namespace GUI
             this.txtTongBan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTongBan.ForeColor = System.Drawing.Color.White;
             this.txtTongBan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongBan.Location = new System.Drawing.Point(122, 423);
+            this.txtTongBan.Location = new System.Drawing.Point(131, 421);
             this.txtTongBan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTongBan.Name = "txtTongBan";
             this.txtTongBan.PasswordChar = '\0';
@@ -223,7 +223,7 @@ namespace GUI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(31, 432);
+            this.label5.Location = new System.Drawing.Point(45, 423);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 20);
@@ -246,7 +246,7 @@ namespace GUI
             this.txtTongLai.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTongLai.ForeColor = System.Drawing.Color.White;
             this.txtTongLai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongLai.Location = new System.Drawing.Point(627, 423);
+            this.txtTongLai.Location = new System.Drawing.Point(617, 421);
             this.txtTongLai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTongLai.Name = "txtTongLai";
             this.txtTongLai.PasswordChar = '\0';
@@ -261,7 +261,7 @@ namespace GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(544, 432);
+            this.label4.Location = new System.Drawing.Point(543, 423);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 20);
@@ -284,7 +284,7 @@ namespace GUI
             this.txtTongNhap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTongNhap.ForeColor = System.Drawing.Color.White;
             this.txtTongNhap.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongNhap.Location = new System.Drawing.Point(388, 423);
+            this.txtTongNhap.Location = new System.Drawing.Point(388, 421);
             this.txtTongNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTongNhap.Name = "txtTongNhap";
             this.txtTongNhap.PasswordChar = '\0';
@@ -299,7 +299,7 @@ namespace GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(294, 432);
+            this.label3.Location = new System.Drawing.Point(293, 423);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);

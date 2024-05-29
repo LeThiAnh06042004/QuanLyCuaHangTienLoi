@@ -231,7 +231,7 @@ namespace DAL
 
                 if (loaitg == "Ngày")
                 {
-                    cmd.Parameters.AddWithValue("@NgayBan", tg); //thêm một tham số với tên @Ngay và giá trị của biến tg, gs tg chưa gt đc chọn
+                    cmd.Parameters.AddWithValue("@NgayBan", tg); //dựa theo tg thêm các tham số ngày, tháng, năm vào sqlcommand
                 }
                 else if (loaitg == "Tháng")
                 {
@@ -242,7 +242,8 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Nam", tg);
                 }
 
-                DataTable dt = new DataTable();
+                // tải dữ liệu vào dt
+                DataTable dt = new DataTable(); 
                 dt.Load(cmd.ExecuteReader());
                 return dt;
             }

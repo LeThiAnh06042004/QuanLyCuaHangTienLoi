@@ -40,13 +40,14 @@ namespace GUI
         }
         private DTO_ChiTietHDN TaoDTO_ChiTietHDN(string maHDN, string maSP, string tenSP, int soLuong, int giaNhap)
         {
+            //tạo 1 đối tượng dto mới và gán gt các thuộc tính cho đối tượng
             DTO_ChiTietHDN ct = new DTO_ChiTietHDN();
             ct.CTHDN_MaHDN = maHDN;
             ct.CTHDN_MaSP = maSP;
             ct.CTHDN_TenSP = tenSP;
             ct.CTHDN_SL = soLuong;
             ct.CTHDN_GiaNhap = giaNhap;
-            return ct;
+            return ct; // trả về đối tượng dto vừa tạo
         }
 
 
@@ -66,8 +67,9 @@ namespace GUI
                         dgGioHang.Rows.Add(txtMaSP.Text, txtTenSP.Text, txtSL.Text, txtGiaNhap.Text);
                         TinhTien();
 
+                        //tạo đối tg dto từ các điều khiển và thêm vào csdl
                         DTO_ChiTietHDN ct = TaoDTO_ChiTietHDN(txtMaHD.Text, txtMaSP.Text, txtTenSP.Text, int.Parse(txtSL.Text), int.Parse(txtGiaNhap.Text));
-                        if (!busCTHDN.ThemCTHDN(ct))
+                        if (!busCTHDN.ThemCTHDN(ct)) // nếu thêm vào thất bại
                         {
                             MessageBox.Show("Không thể lưu chi tiết hóa đơn nhập !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -83,6 +85,7 @@ namespace GUI
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void TinhTien()
         {
             double tong = 0;
@@ -112,7 +115,7 @@ namespace GUI
 
                     DTO_ChiTietHDN ct = TaoDTO_ChiTietHDN(txtMaHD.Text, txtMaSP.Text, txtTenSP.Text, int.Parse(txtSL.Text), int.Parse(txtGiaNhap.Text));
 
-                    if (!busCTHDN.SuaCTHDN(ct))
+                    if (!busCTHDN.SuaCTHDN(ct)) //gọi pt sửa của đối tg bus để cập nhật cthdn
                     {
                         MessageBox.Show("Không thể cập nhật chi tiết hóa đơn nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -155,11 +158,12 @@ namespace GUI
 
         private void btnChonHDN_Click(object sender, EventArgs e)
         {
+            //tạo và hiển thị form hdn
             GUI_HoaDonNhap hdn = new GUI_HoaDonNhap();
-            if (hdn.ShowDialog() == DialogResult.Cancel)
+            if (hdn.ShowDialog() == DialogResult.Cancel)  // nếu tắt form hdn, phương thức gán sẽ đc gọi để lấy các thông tin hdn
             {
                 hdn.GanHDN(out string mahdn, out string manv, out string mancc, out string ngaynhap);
-                txtMaHD.Text = mahdn;
+                txtMaHD.Text = mahdn; // các thong tin sau đó đc gán lên điều khiển các form chính
                 cboMaNV.Text = manv;
                 cboNCC.Text = mancc;
                 dtNgayNhap.Text = ngaynhap;
@@ -178,7 +182,6 @@ namespace GUI
         {
             try
             {
-                //Lưu hóa đơn nhập
                 if (txtMaHD.Text.Trim() != "" && cboMaNV.Text != "" && cboNCC.Text != "" && dtNgayNhap.Text != "")
                 {
 

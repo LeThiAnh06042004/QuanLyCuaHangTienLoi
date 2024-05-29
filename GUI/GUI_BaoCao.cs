@@ -42,11 +42,12 @@ namespace GUI
 
             try
             {
-                DataTable dt = busCTB.BaoCaoDT(loaitg, tg);
+                DataTable dt = busCTB.BaoCaoDT(loaitg, tg); //gọi pt báo cáo từ lớp bus để lấy dl báo cáo dựa trên loại tg
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dgBaoCao.DataSource = dt;
 
+                    //khởi tạo các biến để lưu tổng số hóa đơn bán, tổng số tiền nhập, tổng số tiền bán, tổng số tiền lợi
                     int tongHoaDon = 0;
                     double tongNhap = 0;
                     double tongBan = 0;
@@ -54,12 +55,12 @@ namespace GUI
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        tongHoaDon++;
-                        tongNhap += Convert.ToDouble(row["Tổng tiền nhập"]);
+                        tongHoaDon++; //tổng số hóa đơn sẽ đc cộng thêm 1 cho mỗi hàng dl
+                        tongNhap += Convert.ToDouble(row["Tổng tiền nhập"]); //cộng gt tổng tiền nhập vào biến tongnhap
                         tongBan += Convert.ToDouble(row["Tổng tiền bán"]);
                         tongLoi += Convert.ToDouble(row["Tổng tiền lãi"]);
                     }
-
+                    //gán gt vào các ô textbox
                     txtSL.Text = tongHoaDon.ToString();
                     txtTongNhap.Text = tongNhap.ToString();
                     txtTongBan.Text = tongBan.ToString();

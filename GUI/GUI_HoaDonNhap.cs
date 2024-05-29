@@ -156,6 +156,7 @@ namespace GUI
         }
         public void GanHDN(out string mahdn, out string manv, out string mancc, out string ngaynhap)
         {
+            //sd out để ko cần khởi tạo lại giá trị
             mahdn = txtMaHD.Text;
             manv = cboNV.Text;
             mancc = cboNCC.Text;
